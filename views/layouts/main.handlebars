@@ -1,0 +1,111 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../public/assets/img/news.png">
+
+    <title>FitToScrape</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="../public/assets/css/scrape.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Mongo FitToScrape</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="../navbar/">All Articles</a>
+                    </li>
+                    <li>
+                        <a href="../navbar-static-top/">Saved Articles</a>
+                    </li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Main component for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <div id="jumbo-top">
+                <h1 id="jumbo-header">Mongo NY Times Scraper</h1>
+                <p id="jumbo-p">This app will scrape the top stories from CNN and allowed you
+                    <br/>to take notes for articles that you have saved</p>
+
+                <br/>
+                <form action="/scrape" method="GET">
+                    <a class="btn btn-lg btn-primary" href="#" role="button">Scrape Articles &raquo;</a>
+                </form>
+                </p>
+            </div>
+        </div>
+        <!-- End of Jumbotron -->
+
+        <section>
+
+            {{{ body }}}
+
+        </section>
+
+        <!-- modal -->
+        <div id="addnote">
+            <div id="note-displayer">
+                <h2>Note Taking</h2>
+                <h3>Article:
+                    <span id="article-title"></span>
+                </h3>
+                <div id="note">
+                    <label for="note-title">Title</label>
+                    <br>
+                    <input type="text" placeholder="Title" name="title" id="note-title">
+                    <br>
+                    <label for="note-body">Note</label>
+                    <br>
+                    <textarea rows="7" placeholder="Note" id="note-body"></textarea>
+                    <br>
+                    <button type="submit" id="add-note">Save Note</button>
+                    <button type="button" id="close-note">Cancel</button>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <!--end of container -->
+
+
+
+
+
+    <!-- jQuery Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Added link to the fittoscrape script -->
+    <script type="text/javascript" src="assets/js/app.js"></script>
+    <!--scripts-->
+
+
+</body>
+
+<footer>© Copyright 2017 JJ-Code</footer>
+
+</html>

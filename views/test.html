@@ -1,0 +1,122 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../public/assets/img/news.png">
+
+    <title>FitToScrape</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="../public/assets/css/scrape.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Mongo FitToScrape</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="../navbar/">All Articles</a>
+                    </li>
+                    <li>
+                        <a href="../navbar-static-top/">Saved Articles</a>
+                    </li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Main component for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <div id="jumbo-top">
+                <h1 id="jumbo-header">Mongo NY Times Scraper</h1>
+                <p id="jumbo-p">This app will scrape the top stories from CNN and allowed you
+                    <br/>to take notes for articles that you have saved</p>
+
+                <br/>
+                <a class="btn btn-lg btn-primary" href="#" role="button">Scrape Articles &raquo;</a>
+                </p>
+            </div>
+        </div>
+        <!-- End of Jumbotron -->
+
+
+
+        <section>
+
+            <div class="story-body" id="5a374e630f2f393b59bb8ac6">
+                <h2>
+                    <a href="https://www.nytimes.com/slideshow/2017/12/16/world/europe/a-chateau-fit-for-a-crown-prince.html" target="_blank">A Chateau Fit for a Crown Prince</a>
+                    <form action="/save/5a374e630f2f393b59bb8ac6" method="POST">
+                        <button type="submit" class="status btn btn-lg btn-primary" value="Save Article">Save Article</button>
+                        <button type="button" class="addnote-button btn btn-lg btn-primary" value="5a374e630f2f393b59bb8ac6" href="#note-displayer">Add A Note</button>
+                    </form>
+                </h2>
+                <summary>Crown Prince Mohammed bin Salman, heir to the Saudi throne, who is leading a crackdown on corruption by the
+                    Saudi elite, bought the lavish Château Louis XIV.</summary>
+                <img class="media" src="https://static01.nyt.com/images/2017/12/17/world/europe/17CHATEAU-slide-TDMK/17CHATEAU-slide-TDMK-mediumThreeByTwo210.jpg">
+            </div>
+
+        </section>
+
+        <!-- modal -->
+        <div id="addnote">
+            <div id="note-displayer">
+                <h2>Note Taking</h2>
+                <h3>Article:
+                    <span id="article-title"></span>
+                </h3>
+                <div id="note">
+                    <label for="note-title">Title</label>
+                    <br>
+                    <input type="text" placeholder="Title" name="title" id="note-title">
+                    <br>
+                    <label for="note-body">Note</label>
+                    <br>
+                    <textarea rows="7" placeholder="Note" id="note-body"></textarea>
+                    <br><br>
+                    <button type="submit" id="add-note">Save Note</button>
+                    <button type="button" id="close-note">Cancel</button>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <!--end of container -->
+
+
+
+
+
+    <!-- jQuery Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Added link to the fittoscrape script -->
+    <script type="text/javascript" src="../public/assets/js/app.js"></script>
+    <!--scripts-->
+
+
+</body>
+
+<footer>© Copyright 2017 JJ-Code</footer>
+
+</html>
