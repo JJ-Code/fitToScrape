@@ -8,7 +8,7 @@ const db = require("./models");
 
 //----------------------------------------
 //Express config (telling node creating an express server):
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8011;
 // Initialize Express
 const app = express();
 //----------------------------------------
@@ -20,6 +20,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Use express.static to serve the public folder as a static directory
 app.use(express.static("public"));
 app.use(bodyParser.json());
+
+
+// Set Handlebars.
+const exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 
 // Routes

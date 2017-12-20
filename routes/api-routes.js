@@ -1,12 +1,11 @@
 // Dependencies
 // =============================================================
-const logger = require("morgan");
 const mongoose = require("mongoose");
 const axios = require("axios");
 const cheerio = require("cheerio");
 
 // Require all models
-const db = require("./models");
+const db = require("../models");
 
 
 //----------------------------------------

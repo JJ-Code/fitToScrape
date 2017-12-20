@@ -3,7 +3,7 @@
 const path = require("path");
 const mongoose = require('mongoose');
 // Requiring our models
-const Article = require("./models/Article");
+const db = require("../models");
 
 // Routes
 // =============================================================
@@ -14,9 +14,9 @@ module.exports = (app) =>  {
     // index route loads 
     app.get("/", function (req, res) {
 
-        Article.find({}, null, { sort: { created: -1 } }, function (err, data) {
+        db.Article.find({}, null, { sort: { created: -1 } }, function (err, data) {
             if (data.length === 0) {
-                res.render("placeholder-greeting", { message: "There's nothing scraped yet. Please click \"Scrape Article Button\" to start." });
+                res.render("placeholder-greeting");
             }
             else {
                 res.render("index", { articles: data });
