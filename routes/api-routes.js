@@ -11,8 +11,9 @@ const db = require("../models");
 //----------------------------------------
 // Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/fittoscrape"
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/fittoscrape", {
+mongoose.connect(MONGODB_URI, {
     useMongoClient: true
 });
 
