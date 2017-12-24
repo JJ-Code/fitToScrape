@@ -9,7 +9,7 @@ const ArticleSchema = new Schema({
     },
     link: {
         type: String,
-        required: true,
+        required: false,
     },
     summary: {
         type: String,
@@ -17,7 +17,7 @@ const ArticleSchema = new Schema({
     },
     img: {
         type: String,
-        default: "../public/assets/img/img_not_available.png"
+        default: "/assets/img/img_not_available.png"
     },
     issaved: {
         type: Boolean,

@@ -2,7 +2,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
-
+const mongoose = require("mongoose");
 //----------------------------------------
 const db = require("./models");
 
@@ -20,6 +20,22 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Use express.static to serve the public folder as a static directory
 app.use(express.static("public"));
 app.use(bodyParser.json());
+
+//----------------------------------------
+// Set mongoose to leverage built in JavaScript ES6 Promises
+// Connect to the Mongo DB
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/fittoscrape"
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI, {
+    useMongoClient: true
+});
+
+const database = mongoose.connection;
+database.on('error', console.error.bind(console, 'connection error:'));
+database.once('open', function () {
+    // we're connected! 
+    console.log("database connected");
+});
 
 
 // Set Handlebars.

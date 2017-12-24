@@ -8,14 +8,6 @@ const cheerio = require("cheerio");
 const db = require("../models");
 
 
-//----------------------------------------
-// Set mongoose to leverage built in JavaScript ES6 Promises
-// Connect to the Mongo DB
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/fittoscrape"
-mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI, {
-    useMongoClient: true
-});
 
 // =============================================================
 module.exports = (app) => {
@@ -23,6 +15,9 @@ module.exports = (app) => {
     app.get("/scrape", function (req, res) {
         axios.get("https://www.nytimes.com/section/politics").then(function (response) {
             const $ = cheerio.load(response.data);
+            let resultsArray = [];
+
+
             $("div.story-body").each(function (i, element) {
                 const result = {};
                 result.title = $(this)
@@ -42,20 +37,34 @@ module.exports = (app) => {
                     .find("img")
                     .attr("src");
 
-                //putting scraped in DB
-                db.Article
-                    .create(result)
-                    .then(function (dbArticle) {
-                        res.send("Scrape Complete");
-                    })
-                    .catch(function (err) {
-                        res.json(err);
-                    });
+                //Adding of statement to grab image of thumbnail if there is no ficure.media  image    
+                if (result.img) {
+                    result.img = result.img;
+                } else {
+                    result.img = $(element).find(".wide-thumb").find("img").attr("src");
+                };
+
+                //putting all scraped articles into array of objects to be sent to databae 
+                //and store once instead of a for each time 
+                resultsArray.push(result);
             });
-        });
-    });//end of scrape 
+            //putting scraped in DB
+
+            db.Article
+                .create(resultsArray)
+                .then(function (dbArticle) {
+                    // res.send(dbArticle);
+                    //refresh the page with scrape articles
+                    res.redirect('/');
+                })
+                .catch(function (err) {
+                    res.json(err);
+                });
 
 
-};//end of export 
+        }); //end of cheerio
+
+    }); //end of scrape 
 
 
+}; //end of export
