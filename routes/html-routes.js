@@ -31,7 +31,7 @@ module.exports = (app) =>  {
     app.get("/saved", function (req, res) {
         db.Article.find({ issaved: true }, null, { sort: { created: -1 } }, function (err, data) {
             if (data.length === 0) {
-                res.render("placeholder-saved", { message: "You have not saved any articles yet. Hit the \"Save Article\" to try it out!" });
+                res.render("placeholder-saved", { message: "Oh no, you have not saved any articles yet. Let's go back and hit \"Save Article\" to try it out!" });
             }
             else {
                 res.render("saved", { saved: data });
