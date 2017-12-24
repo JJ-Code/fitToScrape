@@ -8,7 +8,6 @@ const cheerio = require("cheerio");
 const db = require("../models");
 
 
-
 // =============================================================
 module.exports = (app) => {
 
@@ -65,6 +64,24 @@ module.exports = (app) => {
         }); //end of cheerio
 
     }); //end of scrape 
+
+
+
+    app.post("/save/:id", function (req, res) {
+        db.Article.findById(req.params.id, function (err, data) {
+            if (data.issaved) {
+                db.Article.findByIdAndUpdate(req.params.id, { $set: { issaved: false, status: "Save Article" } }, { new: true }, function (err, data) {
+                    res.redirect("/");
+                });
+            }
+            else {
+                db.Article.findByIdAndUpdate(req.params.id, { $set: { issaved: true, status: "Saved" } }, { new: true }, function (err, data) {
+                    res.redirect("/saved");
+                });
+            }
+        });
+    });
+
 
 
 }; //end of export
