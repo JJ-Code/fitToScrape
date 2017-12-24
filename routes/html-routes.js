@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 // Requiring our models
 const db = require("../models");
 
+
 // Routes
 // =============================================================
 module.exports = (app) =>  {
@@ -16,7 +17,7 @@ module.exports = (app) =>  {
 
         db.Article.find({}, null, { sort: { created: -1 } }, function (err, data) {
             if (data.length === 0) {
-                res.render("placeholder-no-articles", { message: "No articles scraped yet, hit the scraped button to begin!"});
+                res.render("placeholder-no-articles", { message: "No articles scraped yet, hit the scrape button to begin!"});
             }
             else {
                 res.render("index", { articles: data });
@@ -37,6 +38,26 @@ module.exports = (app) =>  {
             }
         });
     });//end of saved
+
+
+    app.get("/reset", function (req, res) {
+        db.Article.remove({}, function (err, row) {
+            if (err) {
+                console.log("Collection couldn't be removed" + err);
+                return;
+            }
+            db.Article.remove({}, function (err, row) {
+                if (err) {
+                    console.log("Collection couldn't be removed" + err);
+                    return;
+                }
+                res.redirect('/');
+                console.log("collection removed");
+            }) 
+            
+        });
+
+    });//end of reset
 
 
 
