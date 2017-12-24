@@ -16,7 +16,7 @@ module.exports = (app) =>  {
 
         db.Article.find({}, null, { sort: { created: -1 } }, function (err, data) {
             if (data.length === 0) {
-                res.render("placeholder-no-articles", { message: "No, articles scraped yet, hit the scraped button to begin!"});
+                res.render("placeholder-no-articles", { message: "No articles scraped yet, hit the scraped button to begin!"});
             }
             else {
                 res.render("index", { articles: data });
