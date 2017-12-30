@@ -3,8 +3,9 @@ function shownote(event) {
     var id = $(this).attr("value");
     $("#addnote").fadeIn(300).css("display", "flex");
     $("#add-note").attr("value", id);
+
     $.get("/note/" + id, function (data) {
-        
+        $("#article-title").text(data.title);
         $("#note-title").val(data.note.title);
         $("#note-body").val(data.note.body);
     });
