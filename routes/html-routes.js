@@ -46,7 +46,7 @@ module.exports = (app) =>  {
                 console.log("Collection couldn't be removed" + err);
                 return;
             }
-            db.Article.remove({}, function (err, row) {
+            db.Note.remove({}, function (err, row) {
                 if (err) {
                     console.log("Collection couldn't be removed" + err);
                     return;
@@ -59,7 +59,7 @@ module.exports = (app) =>  {
 
     });//end of reset
 
-
+  
 
 
 };//end of export 

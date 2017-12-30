@@ -11,6 +11,7 @@ const db = require("../models");
 // =============================================================
 module.exports = (app) => {
 
+    //api route to scrape from NYT and to store data into database
     app.get("/scrape", function (req, res) {
         axios.get("https://www.nytimes.com/section/politics").then(function (response) {
             const $ = cheerio.load(response.data);
@@ -66,7 +67,7 @@ module.exports = (app) => {
     }); //end of scrape 
 
 
-
+//saved articles
     app.post("/save/:id", function (req, res) {
         db.Article.findById(req.params.id, function (err, data) {
             if (data.issaved) {
@@ -82,6 +83,38 @@ module.exports = (app) => {
         });
     });
 
+//Creating the note and tieing it to article 
+    app.post("/note/:id", function (req, res) {
+        db.Note
+            .create(req.body)
+            .then(function (dbNote) {
+                return db.Article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true });
+            })
+            .then(function (dbArticle) {
+                res.json(dbArticle);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+    });
 
 
+
+//Editing the note
+    app.get("/note/:id", function (req, res) {
+        db.Article
+            .findOne({ _id: req.params.id })
+            // ..and populate all of the notes associated with it
+            .populate("note")
+            .then(function (dbArticle) {
+                // If we were able to successfully find an Article with the given id, send it back to the client
+                res.json(dbArticle);
+            })
+            .catch(function (err) {
+                // If an error occurred, send it to the client
+                res.json(err);
+            });
+    });
+
+    
 }; //end of export

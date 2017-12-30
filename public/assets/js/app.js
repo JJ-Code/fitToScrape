@@ -3,27 +3,24 @@ function shownote(event) {
     var id = $(this).attr("value");
     $("#addnote").fadeIn(300).css("display", "flex");
     $("#add-note").attr("value", id);
-    $.get("/" + id, function (data) {
-        $("#article-title").text(data.title);
-        $.get("/note/" + id, function (data) {
-            if (data) {
-                $("#note-title").val(data.title);
-                $("#note-body").val(data.body);
-            }
-        });
+    $.get("/note/" + id, function (data) {
+        
+        $("#note-title").val(data.note.title);
+        $("#note-body").val(data.note.body);
     });
 
-}
+};
 
 function addnote(event) {
     event.preventDefault();
     var id = $(this).attr("value");
+
     var obj = {
         title: $("#note-title").val().trim(),
         body: $("#note-body").val().trim()
     };
     $.post("/note/" + id, obj, function (data) {
-        window.location.href = "/saved";
+        window.location.href = "/";
     });
 }
 
