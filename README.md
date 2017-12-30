@@ -15,7 +15,9 @@ Here is a demo hosted on Heroku: https://fit-to-scrape1.herokuapp.com/
 
 `mongo`: database 
 
-`mongoose`: Orm used to create `fitToscrape` db
+`mongoose`: Orm used to create
+
+`fitToscrape` db
 
 `express`: builds server-side routes and functions
 
