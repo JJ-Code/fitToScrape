@@ -23,5 +23,6 @@ Here is a demo hosted on Heroku: https://fit-to-scrape1.herokuapp.com/
 
 `express-handlebars`: a front-end builder without requiring multiple html pages
 
+
 ![FitToScrape](/public/assets/img/fittoscrape.png?raw=true)
 
