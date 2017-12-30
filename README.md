@@ -3,7 +3,7 @@
 
 ### Overview
 
-This is a app that scrapes the New York Time Politics's section. It allows user to saved articles, add and edit notes. In this repository, you can have access to all of source code for this app.
+This is a app that scrapes the New York Time Politics's section. It allows user to saved articles, add and edit notes. In this repository, you can have access to all of the source code for this app.
 
 Here is a demo hosted on Heroku: https://fit-to-scrape1.herokuapp.com/
 
@@ -22,3 +22,6 @@ Here is a demo hosted on Heroku: https://fit-to-scrape1.herokuapp.com/
 `morgan`: logs server-side requests, helping debugging
 
 `express-handlebars`: a front-end builder without requiring multiple html pages
+
+![FitToScrape](/public/assets/img/fittoscrape.png?raw=true)
+
