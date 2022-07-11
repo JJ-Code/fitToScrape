@@ -28,3 +28,7 @@ Here is a demo hosted on Heroku: https://fit-to-scrape1.herokuapp.com/
 
 ![FitToScrape](/public/assets/img/fittoscrape.png?raw=true)
 
+Updated 7/10/2022
+
+
+
